@@ -16,7 +16,7 @@ $ docker image pull mariadb:10.5.5-focal
 $ docker image pull centos:centos7
 $ git clone https://gogs.prv.onotm.net/onotmil/cloud-docker-compose.git
 $ cd cloud-docker-compose
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 起動、停止
