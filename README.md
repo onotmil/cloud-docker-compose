@@ -1,10 +1,21 @@
 # 構築
 
+## Requirements
+
+* Docker
+* docker-compose
+* git
+
 ## docker-composeを用いた構築
 
 起動
 
 ```
+$ docker image pull drupal:9.0.5-apache-buster
+$ docker image pull mariadb:10.5.5-focal
+$ docker image pull centos:centos7
+$ git clone https://gogs.prv.onotm.net/onotmil/cloud-docker-compose.git
+$ cd cloud-docker-compose
 $ docker-compose up -d
 ```
 
@@ -139,5 +150,3 @@ $ docker container run --name cloud-mariadb -e MYSQL_ROOT_PASSWORD=postgres  \
                        --restart unless-stopped -p 3306:3306 -d mariadb:10.5.5-focal
 $ mysql --execute='CREATE DATABASE drupal;'
 ```
-
-
