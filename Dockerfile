@@ -30,14 +30,14 @@ RUN composer global -vvv require drush/drush:dev-master
 RUN composer -vvv require drupal/geocoder
 RUN composer -vvv require drupal/geofield
 RUN composer -vvv require drupal/address
-RUN composer -vvv require drupal/cloud
+# RUN composer -vvv require drupal/cloud
 RUN composer -vvv require drupal/bootstrap_cloud
 RUN mkdir -p /opt/drupal/web/modules/contrib &&  \
     chown -R www-data:www-data /opt/drupal/web/modules/contrib
 
-# WORKDIR /opt/drupal/web/modules/contrib
-# RUN git clone https://git.drupalcode.org/project/cloud.git &&  \
-#     chown -R www-data:www-data /opt/drupal/web/modules/contrib/cloud
+WORKDIR /opt/drupal/web/modules/contrib
+RUN git clone https://git.drupalcode.org/project/cloud.git &&  \
+    chown -R www-data:www-data /opt/drupal/web/modules/contrib/cloud
 
 WORKDIR /opt/drupal/web
 RUN chown -R www-data:www-data /opt/drupal &&  \
