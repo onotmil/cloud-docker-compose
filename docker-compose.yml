@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: cloud-drupal
     depends_on:
-      - mariadb
+      - cloud-mariadb
     restart: unless-stopped
     ports:
       - 80:80
@@ -26,4 +26,4 @@ services:
       dockerfile: Dockerfile_db_init
     container_name: cloud-mariadb-init
     depends_on:
-      - mariadb
+      - cloud-mariadb
