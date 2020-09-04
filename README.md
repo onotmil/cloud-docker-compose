@@ -60,11 +60,11 @@ docker container exec -it cloud-drupal bash
 settings.phpに設定追加。コンテナ内で実行すること
 
 ```
-# プライベートディレクトリの設定
+$ # プライベートディレクトリの設定
 $ echo "\$settings['file_private_path'] = __DIR__ . '/files/private';"  \
     >> /opt/drupal/web/sites/default/settings.php
 
-# エラーログをブラウザ表示
+$ # エラーログをブラウザ表示
 $ echo "\$config['system.logging']['error_level'] = 'verbose';"  \
     >> /opt/drupal/web/sites/default/settings.php
 ```
