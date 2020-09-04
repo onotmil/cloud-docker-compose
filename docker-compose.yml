@@ -1,0 +1,29 @@
+version: '3'
+services:
+  cloud-drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cloud-drupal
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+    ports:
+      - 80:80
+
+  cloud-mariadb:
+    image: mariadb:10.5.5-focal
+    container_name: cloud-mariadb
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: postgres
+
+  cloud-mariadb-init:
+    build:
+      context: .
+      dockerfile: Dockerfile_db_init
+    container_name: cloud-mariadb-init
+    depends_on:
+      - mariadb

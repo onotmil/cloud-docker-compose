@@ -1,0 +1,17 @@
+FROM centos:centos7
+
+WORKDIR /
+RUN yum update -y && yum install -y mariadb
+RUN echo '[client]'            >> /root/.my.cnf
+RUN echo 'host=cloud-mariadb'  >> /root/.my.cnf
+RUN echo 'port=3306'           >> /root/.my.cnf
+RUN echo 'user=root'           >> /root/.my.cnf
+RUN echo 'password=postgres'   >> /root/.my.cnf
+
+RUN echo '#!/bin/bash'                                        >> /root/initdb.sh
+RUN echo "while ! mysql --execute='CREATE DATABASE drupal;'"  >> /root/initdb.sh
+RUN echo 'do  sleep 1'                                        >> /root/initdb.sh
+RUN echo 'done'                                               >> /root/initdb.sh
+RUN chmod +x /root/initdb.sh
+
+CMD /root/initdb.sh
