@@ -28,10 +28,25 @@ WORKDIR /opt/drupal
 RUN composer config -vvv repositories.drupal composer https://packages.drupal.org/8
 RUN composer global -vvv require drush/drush:dev-master
 RUN composer -vvv require aws/aws-sdk-php
-RUN composer -vvv require maclof/kubernetes-client
+RUN composer -vvv require behat/mink
+RUN composer -vvv require behat/mink-goutte-driver
+RUN composer -vvv require dealerdirect/phpcodesniffer-composer-installer
+RUN composer -vvv require drupal/address
+RUN composer -vvv require drupal/admin_toolbar
+RUN composer -vvv require drupal/coder
+RUN composer -vvv require drupal/copyright_footer
+RUN composer -vvv require drupal/devel
+RUN composer -vvv require drupal/entity_export_csv
 RUN composer -vvv require drupal/geocoder
 RUN composer -vvv require drupal/geofield
-RUN composer -vvv require drupal/address
+RUN composer -vvv require drupal/memcache
+RUN composer -vvv require drupal/simpletest-simpletest
+RUN composer -vvv require drush/drush
+RUN composer -vvv require geocoder-php/nominatim-provider
+RUN composer -vvv require kint-php/kint
+RUN composer -vvv require maclof/kubernetes-client:0.16
+RUN composer -vvv require phpunit/phpunit ^8
+RUN composer -vvv require symfony/phpunit-bridge
 # RUN composer -vvv require drupal/cloud
 RUN composer -vvv require drupal/bootstrap_cloud
 RUN mkdir -p /opt/drupal/web/modules/contrib &&  \
