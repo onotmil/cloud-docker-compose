@@ -28,6 +28,7 @@ WORKDIR /opt/drupal
 RUN composer config -vvv repositories.drupal composer https://packages.drupal.org/8
 RUN composer global -vvv require drush/drush:dev-master
 RUN composer -vvv require aws/aws-sdk-php
+RUN composer -vvv require maclof/kubernetes-client
 RUN composer -vvv require drupal/geocoder
 RUN composer -vvv require drupal/geofield
 RUN composer -vvv require drupal/address
