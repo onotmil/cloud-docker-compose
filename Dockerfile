@@ -47,6 +47,7 @@ RUN composer -vvv require kint-php/kint
 RUN composer -vvv require maclof/kubernetes-client:0.16
 RUN composer -vvv require phpunit/phpunit ^8
 RUN composer -vvv require symfony/phpunit-bridge
+RUN composer require google/apiclient:"^2.7"
 # RUN composer -vvv require drupal/cloud
 RUN composer -vvv require drupal/bootstrap_cloud
 RUN mkdir -p /opt/drupal/web/modules/contrib &&  \
