@@ -1,4 +1,4 @@
-FROM drupal:9.0.5-apache-buster
+FROM drupal:9.0.6-apache-buster
 
 WORKDIR /tmp
 RUN echo "export EDITOR=nano"                     | tee --append /root/.bashrc
