@@ -100,8 +100,7 @@ RUN cd /var/www &&  \
     composer create-project docomoinnovations/cloud_orchestrator:4.x-dev cloud_orchestrator &&  \
     mkdir -p /var/files/drupal &&  \
     chown -R www-data:www-data /var/files/drupal &&  \
-    chmod -R u+w /var/files/drupal &&  \
-
+    chmod -R u+w /var/files/drupal
 
 EXPOSE 80
 WORKDIR /var/www/cloud_orchestrator
