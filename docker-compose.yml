@@ -1,29 +1,39 @@
 version: '3'
 services:
-  cloud-drupal:
+  cloudorchestrator:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: cloud-drupal
+    container_name: cloudorchestrator
     depends_on:
-      - cloud-mariadb
+    - mariadb
+    - memcached
     restart: unless-stopped
     ports:
-      - 80:80
-
-  cloud-mariadb:
-    image: mariadb:10.5.5-focal
-    container_name: cloud-mariadb
-    restart: unless-stopped
-    ports:
-      - 3306:3306
+    - 80:80
     environment:
-      MYSQL_ROOT_PASSWORD: postgres
+      DrupalUserName: cloud_admin
+      DrupalPassword: cloud_admin
+      DrupalEmail: onotm@intellilink.co.jp
+      DatabaseName: &DatabaseName cloud_orchestrator
+      MySQLUserName: &MySQLUserName administrator
+      MySQLPassword: &MySQLPassword administrator
 
-  cloud-mariadb-init:
-    build:
-      context: .
-      dockerfile: Dockerfile_db_init
-    container_name: cloud-mariadb-init
-    depends_on:
-      - cloud-mariadb
+  mariadb:
+    image: mariadb:10.6-focal
+    container_name: mariadb
+    restart: unless-stopped
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: *MySQLPassword
+      MYSQL_USER: *MySQLUserName
+      MYSQL_PASSWORD: *MySQLPassword
+      MYSQL_DATABASE: *DatabaseName
+
+  memcached:
+    image: memcached:1.6
+    container_name: memcached
+    restart: unless-stopped
+    ports:
+    - 11211:11211
