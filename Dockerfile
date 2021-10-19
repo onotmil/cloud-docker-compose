@@ -97,8 +97,9 @@ RUN set -eux; \
 #     chmod -R g+w /var/www/cloud_orchestrator/files
 
 RUN git config --global url."https://github.com/".insteadOf git@github.com: &&  \
-    git config --global url."https://".insteadOf git:// &&  \
-    cd /var/www &&  \
+    git config --global url."https://".insteadOf git://
+
+RUN cd /var/www &&  \
     composer create-project docomoinnovations/cloud_orchestrator:4.x-dev cloud_orchestrator &&  \
     mkdir -p /var/files/drupal &&  \
     chown -R www-data:www-data /var/files/drupal &&  \

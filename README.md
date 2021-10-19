@@ -17,6 +17,9 @@ $ vi ./docker-compose.yml  # 変数とかを変更
 $ docker-compose up -d --build
 ```
 
+初回起動時は Drupal と Cloud Orchestrator のインストール処理が走るので、 `docker-compose up -d --build` が成功した後3分くらい待ってからアクセスすること。
+
+
 そのほかの操作
 
 ```
