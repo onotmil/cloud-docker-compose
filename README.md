@@ -26,18 +26,6 @@ $ docker-compose rm     # 削除
 $ docker-compose exec cloudorchestrator bash   # Cloud Orchestrator のコンテナにログインする
 ```
 
-
-## Drupalをインストールした後に必要な設定
-
-Drupalコンテナにログイン
-
-```
-docker container exec -it cloud-drupal bash
-```
-
-settings.phpに設定追加。コンテナ内で実行すること
-
-
 <!--
 ```
 $ # プライベートディレクトリの設定
