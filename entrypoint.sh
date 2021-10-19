@@ -47,8 +47,6 @@ then
   drush cset -y system.theme admin claro
 
   # Setup Memcache module
-  git config --global url."https://github.com/".insteadOf git@github.com:
-  git config --global url."https://".insteadOf git://
   composer require drupal/memcache drupal/queue_ui
   drush en -y memcache memcache_admin
   drush cr
