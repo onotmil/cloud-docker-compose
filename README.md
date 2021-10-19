@@ -1,14 +1,8 @@
-# 構築
+# Cloud Orchestrator を docker-compose で起動するやつ
 
-## Requirements
+自分用
 
-* Docker
-* docker-compose
-* git
-
-## docker-composeを用いた構築
-
-起動
+## 起動方法
 
 ```
 $ git clone https://paleog.intellil.ink/onotm/cloud-docker-compose.git
@@ -29,7 +23,13 @@ $ docker-compose rm     # 削除
 $ docker-compose exec cloudorchestrator bash   # Cloud Orchestrator のコンテナにログインする
 ```
 
+## そのほか
+
+***composer、それは実行するたびに実行結果が変わる魔法のパッケージマネージャ。***
+
 <!--
+あとで使うかもしれないのでメモ。
+
 ```
 $ # プライベートディレクトリの設定
 $ echo "\$settings['file_private_path'] = __DIR__ . '/files/private';"  \
