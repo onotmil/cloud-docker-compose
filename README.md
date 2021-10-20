@@ -24,7 +24,7 @@ $ docker-compose exec cloudorchestrator bash   # Cloud Orchestrator のコンテ
 
 ## そのほか
 
-***composer、それは実行するたびに実行結果が変わる魔法のパッケージマネージャ。***
+***composer、それは実行するたびに結果が変わる魔法のパッケージマネージャ。***
 
 <!--
 あとで使うかもしれないのでメモ。
@@ -32,10 +32,6 @@ $ docker-compose exec cloudorchestrator bash   # Cloud Orchestrator のコンテ
 ```
 $ # プライベートディレクトリの設定
 $ echo "\$settings['file_private_path'] = __DIR__ . '/files/private';"  \
-    >> /opt/drupal/web/sites/default/settings.php
-
-$ # エラーログをブラウザ表示
-$ echo "\$config['system.logging']['error_level'] = 'verbose';"  \
     >> /opt/drupal/web/sites/default/settings.php
 ```
 -->
