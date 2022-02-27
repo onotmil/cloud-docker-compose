@@ -8,7 +8,7 @@ services:
         CLOUD_VERTION: 5.x-dev
     container_name: cloudorchestrator
     depends_on:
-    - mariadb
+    - mysql
     - memcached
     restart: unless-stopped
     ports:
@@ -21,9 +21,9 @@ services:
       MYSQL_USER: &MYSQL_USER administrator
       MYSQL_PASSWORD: &MYSQL_PASSWORD administrator
 
-  mariadb:
+  mysql:
     image: mariadb:10.6-focal
-    container_name: mariadb
+    container_name: mysql
     restart: unless-stopped
     ports:
     - 3306:3306
