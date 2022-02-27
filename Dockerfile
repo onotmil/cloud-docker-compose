@@ -93,6 +93,7 @@ RUN set -eux; \
 RUN git config --global url."https://github.com/".insteadOf git@github.com: &&  \
     git config --global url."https://".insteadOf git://
 
+ARG CLOUD_VERTION
 RUN cd /var/www &&  \
     composer create-project  \
       docomoinnovations/cloud_orchestrator:${CLOUD_VERTION}  \
