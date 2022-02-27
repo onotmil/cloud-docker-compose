@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        CLOUD_VERTION: 5.x-dev
     container_name: cloudorchestrator
     depends_on:
     - mariadb
@@ -12,12 +14,12 @@ services:
     ports:
     - 80:80
     environment:
-      DrupalUserName: cloud_admin
-      DrupalPassword: cloud_admin
-      DrupalEmail: onotm@intellilink.co.jp
-      DatabaseName: &DatabaseName cloud_orchestrator
-      MySQLUserName: &MySQLUserName administrator
-      MySQLPassword: &MySQLPassword administrator
+      DRUPAL_USER: cloud_admin
+      DRUPAL_PASSWORD: cloud_admin
+      DRUPAL_EMAIL: onotm@intellilink.co.jp
+      MYSQL_DATABASE: &MYSQL_DATABASE cloud_orchestrator
+      MYSQL_USER: &MYSQL_USER administrator
+      MYSQL_PASSWORD: &MYSQL_PASSWORD administrator
 
   mariadb:
     image: mariadb:10.6-focal
@@ -26,10 +28,10 @@ services:
     ports:
     - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: *MySQLPassword
-      MYSQL_USER: *MySQLUserName
-      MYSQL_PASSWORD: *MySQLPassword
-      MYSQL_DATABASE: *DatabaseName
+      MYSQL_ROOT_PASSWORD: *MYSQL_PASSWORD
+      MYSQL_USER: *MYSQL_USER
+      MYSQL_PASSWORD: *MYSQL_PASSWORD
+      MYSQL_DATABASE: *MYSQL_DATABASE
 
   memcached:
     image: memcached:1.6
