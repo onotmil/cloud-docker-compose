@@ -46,7 +46,7 @@ then
 
   {
     echo "*/5 * * * * www-data cd /var/www/cloud_orchestrator && /usr/local/bin/drush cron > /dev/null 2>&1"
-  } | crontab -
+  } >> /etc/crontab
 
   # Switch to Claro Admin
   drush then -y claro
