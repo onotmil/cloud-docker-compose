@@ -8,13 +8,13 @@
 $ git clone https://paleog.intellil.ink/onotm/cloud-docker-compose.git
 $ cd cloud-docker-compose
 $ vi ./docker-compose.yml  # 変数とかを変更
-$ mkdir ./volume
+$ mkdir ./volume  # このディレクトリがコンテナにバインドされ、中にcloudモジュールのリポジトリがcloneされる
 
 $ PROJECT_NAME=cloudorchestrator
 $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
 ```
 
-初回起動時は Drupal と Cloud Orchestrator のインストール処理が走るので、 `docker-compose up -d --build` が成功した後3分くらい待ってからアクセスすること。
+初回起動時は Drupal と Cloud Orchestrator のインストール処理が走るので、 `docker-compose up -d --build` が成功した後5分くらい待ってからアクセスすること。
 
 コピペ用
 
