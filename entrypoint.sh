@@ -5,6 +5,8 @@ DOCROOT=${PROJECTROOT}/docroot
 
 PRIVATEROOT=/var/files/drupal
 
+VOLUME_ROOT=/volume
+
 cd ${PROJECTROOT}
 
 if ! [ -f ${DOCROOT}/sites/default/settings.php ]
@@ -64,10 +66,35 @@ then
     echo "\$config['system.logging']['error_level'] = 'verbose';"
   } >> ${DOCROOT}/sites/default/settings.php
 
+
+  # ###################################################  CLOUD MODULE  ########
+  cd ${VOLUME_ROOT}
+  git clone https://git.drupalcode.org/project/cloud.git
+  cd cloud && git checkout 5.x &&
+  rm -rf ${DOCROOT}/modules/contrib/cloud
+  ln -s ${VOLUME_ROOT}/cloud ${DOCROOT}/modules/contrib/cloud
+
+
+  # ################################################  CLOUD_DASHBOARD  ########
+  # https://git.drupalcode.org/project/cloud/-/blob/5.x/modules/cloud_dashboard/INSTALL.md
+  rm -rf ${DOCROOT}/modules/contrib/cloud_dashboard
+  ln -s ${VOLUME_ROOT}/cloud/modules/cloud_dashboard  \
+        ${DOCROOT}/modules/contrib/cloud_dashboard
+
+  cd ${DOCROOT}
+  drush en -y cloud_dashboard simple_oauth jsonapi
+
+  # https://git.drupalcode.org/project/cloud/-/blob/5.x/modules/cloud_dashboard/BUILD.md
+  cd ${DOCROOT}/modules/contrib/cloud_dashboard/cloud_dashboard
+  yarn
+  bash ./build.sh
+
+
   chown -R www-data:www-data ${PROJECTROOT}
   chmod -R g+w ${PROJECTROOT}
   drush -y cr
+  drush -y updb
 fi
 
-cron
+# cron
 apache2-foreground

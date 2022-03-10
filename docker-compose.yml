@@ -20,6 +20,10 @@ services:
       MYSQL_DATABASE: &MYSQL_DATABASE cloud_orchestrator
       MYSQL_USER: &MYSQL_USER administrator
       MYSQL_PASSWORD: &MYSQL_PASSWORD administrator
+    volumes:
+    - type: bind
+      source: ./volume
+      target: /volume
 
   mysql:
     image: mariadb:10.6-focal
