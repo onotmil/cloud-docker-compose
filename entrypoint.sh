@@ -77,17 +77,17 @@ then
 
   # ################################################  CLOUD_DASHBOARD  ########
   # https://git.drupalcode.org/project/cloud/-/blob/5.x/modules/cloud_dashboard/INSTALL.md
-  rm -rf ${DOCROOT}/modules/contrib/cloud_dashboard
-  ln -s ${VOLUME_ROOT}/cloud/modules/cloud_dashboard  \
-        ${DOCROOT}/modules/contrib/cloud_dashboard
-
-  cd ${DOCROOT}
-  drush en -y cloud_dashboard simple_oauth jsonapi
+  # rm -rf ${DOCROOT}/modules/contrib/cloud_dashboard
+  # ln -s ${VOLUME_ROOT}/cloud/modules/cloud_dashboard  \
+  #       ${DOCROOT}/modules/contrib/cloud_dashboard
+  #
+  # cd ${DOCROOT}
+  # drush en -y cloud_dashboard simple_oauth jsonapi
 
   # https://git.drupalcode.org/project/cloud/-/blob/5.x/modules/cloud_dashboard/BUILD.md
-  cd ${DOCROOT}/modules/contrib/cloud_dashboard/cloud_dashboard
-  yarn
-  bash ./build.sh
+  # cd ${DOCROOT}/modules/contrib/cloud_dashboard/cloud_dashboard
+  # yarn
+  # bash ./build.sh
 
 
   chown -R www-data:www-data ${PROJECTROOT}

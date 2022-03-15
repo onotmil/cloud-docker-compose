@@ -111,9 +111,9 @@ RUN chmod 755 /entrypoint.sh
 VOLUME /volume
 
 RUN apt install -y less nano openssh-client jq;  \
-    curl -fsSL https://deb.nodesource.com/setup_16.x | bash -;  \
-    apt install -y nodejs;  \
-    npm install --global yarn;  \
+    # curl -fsSL https://deb.nodesource.com/setup_16.x | bash -;  \
+    # apt install -y nodejs;  \
+    # npm install --global yarn;  \
     echo 'alias ll="ls -lah"' >> /root/.bashrc
 
 CMD ["/entrypoint.sh"]
