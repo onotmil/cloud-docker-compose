@@ -35,6 +35,18 @@ $ # Cloud Orchestrator のコンテナにログインする
 $ docker-compose --project-name ${PROJECT_NAME} exec cloudorchestrator bash
 ```
 
+`phpcs` を実行する。 FIXME: 動作未確認。
+パス部分は適宜変更すること。このまま走らせるとCloudモジュール全てのファイルを調べるのですごく時間がかかる。
+
+```
+$ docker-compose --project-name ${PROJECT_NAME} exec cloudorchestrator bash
+# phpcs  \
+    --standard=DrupalPractice,Drupal  \
+    --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml  \
+    /var/www/cloud_orchestrator/docroot/modules/contrib/cloud
+```
+
+
 ## そのほか
 
 ***composer、それは実行するたびに結果が変わる魔法のパッケージマネージャ。***
