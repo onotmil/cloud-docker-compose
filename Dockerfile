@@ -102,6 +102,10 @@ RUN cd /var/www &&  \
     chown -R www-data:www-data /var/files/drupal &&  \
     chmod -R u+w /var/files/drupal
 
+RUN cd /var/www/cloud_orchestrator &&  \
+    composer -vvv require squizlabs/php_codesniffer drupal/coder &&  \
+    echo 'export PATH="${PATH}:/var/www/cloud_orchestrator/vendor/bin"' >> /root/.bashrc
+
 EXPOSE 80
 WORKDIR /var/www/cloud_orchestrator
 
