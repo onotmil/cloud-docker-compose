@@ -1,12 +1,14 @@
 version: '3'
 services:
-  cloudorchestrator:
+  cloud-orchestrator:
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        CLOUD_VERTION: 5.x-dev
-    container_name: cloudorchestrator
+        CLOUD_ORCHESTRATOR_VERSION: 5.x-dev
+        CLOUD_VOLUME: &CLOUD_VOLUME /cloud
+        SETTINGS_VOLUME: &SETTINGS_VOLUME /settings
+    container_name: cloud-orchestrator
     depends_on:
     - mysql
     - memcached
@@ -17,20 +19,28 @@ services:
       DRUPAL_USER: cloud_admin
       DRUPAL_PASSWORD: cloud_admin
       DRUPAL_EMAIL: onotm@intellilink.co.jp
+      DRUPAL_TIMEZONE:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: &MYSQL_USER mysql_admin
+      MYSQL_PASSWORD: &MYSQL_PASSWORD mysql_admin
       MYSQL_DATABASE: &MYSQL_DATABASE cloud_orchestrator
-      MYSQL_USER: &MYSQL_USER administrator
-      MYSQL_PASSWORD: &MYSQL_PASSWORD administrator
+      MEMCACHED_HOST: memcached
+      MEMCACHED_PORT: 11211
     volumes:
     - type: bind
-      source: ./volume
-      target: /volume
+      source: ./volumes/cloud
+      target: *CLOUD_VOLUME
+    - type: bind
+      source: ./volumes/settings
+      target: *SETTINGS_VOLUME
 
   mysql:
     image: mariadb:10.6-focal
     container_name: mysql
     restart: unless-stopped
-    ports:
-    - 3306:3306
+    # ports:
+    # - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: *MYSQL_PASSWORD
       MYSQL_USER: *MYSQL_USER
@@ -41,5 +51,5 @@ services:
     image: memcached:1.6
     container_name: memcached
     restart: unless-stopped
-    ports:
-    - 11211:11211
+    # ports:
+    # - 11211:11211

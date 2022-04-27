@@ -8,8 +8,9 @@
 $ git clone https://paleog.intellil.ink/onotm/cloud-docker-compose.git
 $ cd cloud-docker-compose
 $ vi ./docker-compose.yml  # 変数とかを変更
+$ rm -rf ./volumes/* && mkdir ./volumes/cloud ./volumes/settings
 
-$ PROJECT_NAME=cloudorchestrator
+$ PROJECT_NAME=cloud-orchestrator
 $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
 ```
 
@@ -26,20 +27,20 @@ $ docker-compose --project-name ${PROJECT_NAME} stop
 
 $ # 削除
 $ docker-compose --project-name ${PROJECT_NAME} down --volumes --remove-orphans
-$ rm -rf ./volume/*
+$ rm -rf ./volumes/*
 
 $ # ログ
-$ docker-compose --project-name ${PROJECT_NAME} logs --follow cloudorchestrator
+$ docker-compose --project-name ${PROJECT_NAME} logs --follow cloud-orchestrator
 
 $ # Cloud Orchestrator のコンテナにログインする
-$ docker-compose --project-name ${PROJECT_NAME} exec cloudorchestrator bash
+$ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
 ```
 
 `phpcs` を実行する。 FIXME: 動作未確認。
 パス部分は適宜変更すること。このまま走らせるとCloudモジュール全てのファイルを調べるのですごく時間がかかる。
 
 ```
-$ docker-compose --project-name ${PROJECT_NAME} exec cloudorchestrator bash
+$ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
 # phpcs  \
     --standard=DrupalPractice,Drupal  \
     --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml  \
