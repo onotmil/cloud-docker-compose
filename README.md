@@ -16,6 +16,8 @@ $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
 
 初回起動時は Drupal と Cloud Orchestrator のインストール処理が走るので、 `docker-compose up -d --build` が成功した後5分くらい待ってからアクセスすること。
 
+デフォルトでは、 `./volumes/cloud` に cloud モジュールのディレクトリが、 `./volumes/settings` に配下に Drupal の設定ファイルを含むディレクトリがバインドされるので、これらのファイルを変更することでコンテナの中にも反映できる。
+
 コピペ用
 
 ```
