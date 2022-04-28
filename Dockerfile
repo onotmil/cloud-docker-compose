@@ -21,7 +21,8 @@ RUN rm -rf "${CO_DIR}/"*; \
     git config --global url.'https://github.com/'.insteadOf 'git@github.com:'; \
     git config --global url.'https://'.insteadOf 'git://'; \
     composer create-project "docomoinnovations/cloud_orchestrator:${CLOUD_ORCHESTRATOR_VERSION}" "${CO_DIR}"; \
-    chown -R www-data:www-data "${CO_DIR}"
+    chown -R www-data:www-data "${CO_DIR}"; \
+    echo 'export PATH="${PATH}:${CO_DIR}/vendor/bin"' >> /root/.bashrc
 
 # Setup private directories.
 RUN mkdir -p "${PRIVATE_FILE_DIR}"; \
@@ -31,6 +32,10 @@ RUN mkdir -p "${PRIVATE_FILE_DIR}"; \
 
 # Set up a drush command.
 RUN ln -s "${CO_DIR}/vendor/bin/drush" /usr/local/bin/
+
+# Set up phpcs command.
+RUN cd ${CO_DIR}; \
+    composer require squizlabs/php_codesniffer drupal/coder
 
 # RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -;  \
 #     apt install -y nodejs;  \
