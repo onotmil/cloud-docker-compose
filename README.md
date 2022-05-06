@@ -8,7 +8,8 @@
 $ git clone https://paleog.intellil.ink/onotm/cloud-docker-compose.git
 $ cd cloud-docker-compose
 $ vi ./docker-compose.yml  # 変数とかを変更
-$ rm -rf ./volumes/* && mkdir ./volumes/cloud ./volumes/settings
+$ rm -rf ./volumes/cloud ./volumes/settings  \
+  && mkdir ./volumes/cloud ./volumes/settings
 
 $ PROJECT_NAME=cloud-orchestrator
 $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
