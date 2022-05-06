@@ -54,13 +54,3 @@ $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
 ## そのほか
 
 ***composer、それは実行するたびに結果が変わる魔法のパッケージマネージャ。***
-
-<!--
-あとで使うかもしれないのでメモ。
-
-```
-$ # プライベートディレクトリの設定
-$ echo "\$settings['file_private_path'] = __DIR__ . '/files/private';"  \
-    >> /opt/drupal/web/sites/default/settings.php
-```
--->
