@@ -19,7 +19,7 @@ services:
       DRUPAL_USER: cloud_admin
       DRUPAL_PASSWORD: cloud_admin
       DRUPAL_EMAIL: onotm@intellilink.co.jp
-      DRUPAL_TIMEZONE:
+      DRUPAL_TIMEZONE: America/Los_Angeles
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
       MYSQL_USER: &MYSQL_USER mysql_admin
