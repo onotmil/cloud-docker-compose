@@ -39,7 +39,7 @@ $ # Cloud Orchestrator のコンテナにログインする
 $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
 ```
 
-`phpcs` を実行する。
+`phpcs` を実行するなら。
 パス部分は適宜変更すること。このまま走らせるとCloudモジュール全てのファイルを調べるのですごく時間がかかる。
 
 ```
