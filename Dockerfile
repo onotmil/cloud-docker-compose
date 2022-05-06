@@ -44,6 +44,9 @@ RUN cd ${CO_DIR}; \
 VOLUME "${CLOUD_VOLUME}"
 VOLUME "${SETTINGS_VOLUME}"
 
+COPY scripts /scripts
+RUN chmod 755 /scripts/*.sh
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 CMD ["/entrypoint.sh"]

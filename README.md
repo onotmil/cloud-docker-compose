@@ -50,6 +50,15 @@ $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
     /var/www/cloud_orchestrator/docroot/modules/contrib/cloud
 ```
 
+コンテナを作り直さずにCloudモジュールを更新するなら。
+
+```
+$ cd volumes/cloud
+$ git pull
+$ cd ../..
+$ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator /scripts/updb.sh
+```
+
 
 ## そのほか
 
