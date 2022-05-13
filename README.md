@@ -55,7 +55,6 @@ $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
 ```
 $ cd volumes/cloud
 $ git pull
-$ cd ../..
 $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator /scripts/updb.sh
 ```
 
