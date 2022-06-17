@@ -53,6 +53,10 @@ EOF
 \$settings['cache']['default'] = 'cache.backend.memcache';
 EOF
 
+  tee -a "${SETTINGS_FILE}" > /dev/null <<EOF
+\$config['system.logging']['error_level'] = 'verbose';
+EOF
+
   DRUSH_QUEUE_RUN_SCRIPT="${CO_DIR}/docroot/modules/contrib/cloud/scripts/drush_queue_run.sh"
   chmod +x "${DRUSH_QUEUE_RUN_SCRIPT}"
   tee /etc/crontab > /dev/null <<EOF
