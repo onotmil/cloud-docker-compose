@@ -1,4 +1,4 @@
-# Cloud Orchestrator を docker-compose で起動するやつ
+# Cloud Orchestrator を docker-compose で起動するための色々
 
 自分用
 
@@ -7,7 +7,7 @@
 ```
 $ git clone https://paleog.intellil.ink/onotm/cloud-docker-compose.git
 $ cd cloud-docker-compose
-$ vi ./docker-compose.yml  # 変数とかを変更
+$ vi ./docker-compose.yml  # services.cloud-orchestrator.environment の変数を変更
 $ rm -rf ./volumes/cloud ./volumes/settings  \
   && mkdir ./volumes/cloud ./volumes/settings
 
@@ -16,6 +16,7 @@ $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
 ```
 
 初回起動時は Drupal と Cloud Orchestrator のインストール処理が走るので、 `docker-compose up -d --build` が成功した後5分くらい待ってからアクセスすること。
+起動中のログを見る方法は下のコマンド例を参照。
 
 デフォルトでは、 `./volumes/cloud` に cloud モジュールのディレクトリが、 `./volumes/settings` に配下に Drupal の設定ファイルを含むディレクトリがバインドされるので、これらのファイルを変更することでコンテナの中にも反映できる。
 
@@ -58,7 +59,8 @@ $ git pull
 $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator /scripts/updb.sh
 ```
 
-
+<!--
 ## そのほか
 
 ***composer、それは実行するたびに結果が変わる魔法のパッケージマネージャ。***
+-->
