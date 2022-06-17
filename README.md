@@ -21,10 +21,6 @@ $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
 デフォルトでは、 `./volumes/cloud` に cloud モジュールのディレクトリが、 `./volumes/settings` に配下に Drupal の設定ファイルを含むディレクトリがバインドされるので、これらのファイルを変更することでコンテナの中にも反映できる。
 `drush updb` が必要な場合は、コンテナの中にスクリプトを仕込んでいるのでそれを実行すると簡単。
 
-```
-$ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator /scripts/updb.sh
-```
-
 
 コピペ用
 
@@ -44,6 +40,9 @@ $ docker-compose --project-name ${PROJECT_NAME} logs --follow cloud-orchestrator
 
 $ # Cloud Orchestrator のコンテナにログインする
 $ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator bash
+
+$ # drush cr && drush updb を実行する
+$ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator /scripts/updb.sh
 ```
 
 `phpcs` を実行するなら。
