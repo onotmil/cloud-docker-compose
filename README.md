@@ -5,7 +5,7 @@
 ## 起動方法
 
 ```
-$ git clone https://paleog.intellil.ink/onotm/cloud-docker-compose.git
+$ git clone https://github.com/onotmil/cloud-docker-compose.git
 $ cd cloud-docker-compose
 $ vi ./docker-compose.yml  # services.cloud-orchestrator.environment の変数を変更
 $ rm -rf ./volumes/cloud ./volumes/settings  \
@@ -19,6 +19,12 @@ $ docker-compose --project-name ${PROJECT_NAME} up --build --detach
 起動中のログを見る方法は下のコマンド例を参照。
 
 デフォルトでは、 `./volumes/cloud` に cloud モジュールのディレクトリが、 `./volumes/settings` に配下に Drupal の設定ファイルを含むディレクトリがバインドされるので、これらのファイルを変更することでコンテナの中にも反映できる。
+`drush updb` が必要な場合は、コンテナの中にスクリプトを仕込んでいるのでそれを実行すると簡単。
+
+```
+$ docker-compose --project-name ${PROJECT_NAME} exec cloud-orchestrator /scripts/updb.sh
+```
+
 
 コピペ用
 
